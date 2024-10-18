@@ -64,7 +64,7 @@ function createHtpasswdIDP(){
 
 function createIDP(){
   echo "Create IDP"
-  cd ods-install && ./odstest --install-identity-providers
+  cd ods-install && ./odstest --install-identity-providers && cd ..
 }
 
 function updateTestConfig(){
@@ -119,8 +119,8 @@ createHtpasswdIDP
 echo "Create IDP"
 createIDP
 
-echo "Update local test-variables.yml"
+echo "Update test-variables.yml"
 updateTestConfig
 
 # running RHOAI testsuite
-../run_robot_test.sh --skip-install ${RUN_SCRIPT_ARGS} --extra-robot-args "${ROBOT_EXTRA_ARGS}"
+./run_robot_test.sh --skip-install ${RUN_SCRIPT_ARGS} --extra-robot-args "${ROBOT_EXTRA_ARGS}"
