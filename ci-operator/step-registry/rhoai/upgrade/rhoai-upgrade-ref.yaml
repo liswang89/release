@@ -1,0 +1,17 @@
+ref:
+  as: rhoai-upgrade
+  from: rhoai-tests
+  commands: rhoai-upgrade-commands.sh
+  resources:
+    requests:
+      cpu: '1'
+      memory: 500Mi
+  env:
+    - name: TEST_SUITE
+      default: "Post-Upgrade"
+  credentials:
+  - namespace: test-credentials
+    name: rhoai-qe-bucket
+    mount_path: /tmp/secrets/ci
+  documentation: >-
+    This step upgrade RHOAI version and run the post upgrade tests.
